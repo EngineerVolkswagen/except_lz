@@ -1,15 +1,18 @@
 import os
 import pandas as pd
 
+
 class Provero4ka:
     def __init__(self, file, columns, types):
         self.file = file
         self.columns = columns
         self.types = types
 
+
     def check(self):
         if not os.path.exists(self.file):
             raise FileNotFoundError(f"Ошибка: Файл {self.file} не найден.")
+
 
     def load(self):
         try:
@@ -24,6 +27,7 @@ class Provero4ka:
         except Exception as e:
             raise RuntimeError(f"Ошибка загрузки: {str(e)}")
 
+
     def structure(self, df):
         actual_cols = df.columns.tolist()
         if actual_cols != self.columns:
@@ -34,6 +38,7 @@ class Provero4ka:
                 actual_type = str(df[col].dtype)
                 if actual_type != expected_type:
                     raise TypeError(f"Ошибка: Столбец '{col}' — ожидался {expected_type}, получен {actual_type}")
+
 
     def process(self):
         self.check()
