@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 
-class Provero4ka:
+class Proverka:
     def __init__(self, file, columns, types):
         self.file = file
         self.columns = columns
